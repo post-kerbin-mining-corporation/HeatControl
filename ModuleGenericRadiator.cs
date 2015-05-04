@@ -75,6 +75,11 @@ namespace HeatControl
         // Heat Rejection UI note
         [KSPField(isPersistant = false, guiActive = true, guiName = "Current Heat Rejection")]
         public string HeatRejectionGUI = "0 kW";
+        // Radiator Status string
+        [KSPField(isPersistant = false, guiActive = true, guiName = "Radiator Temperature")]
+        public string RadiatorTemp;
+
+       
 
         // Toggle radiator
         public void Toggle()
@@ -166,7 +171,7 @@ namespace HeatControl
             base.OnFixedUpdate();
             if (HighLogic.LoadedScene == GameScenes.FLIGHT)
             {
-               
+                    RadiatorTemp = String.Format("{0:F1} K", part.temperature);
                     // If an animation name is present, assume deployable
                     if (base.animationName != "")
                     {
