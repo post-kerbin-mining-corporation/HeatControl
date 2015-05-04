@@ -18,13 +18,21 @@ namespace HeatControl
 
         // GAMEPLAY
 
-        // Heat radiated when open (kW)
+        // Emissive Constant Extended
         [KSPField(isPersistant = false)]
-        public float HeatRadiatedExtended;
+        public float EmissiveExtended;
 
-        // Heat radiated when closed (kW)
+        // Emissive Constant Closed
         [KSPField(isPersistant = false)]
-        public float HeatRadiated;
+        public float Emissive;
+
+        // Part area extended
+        [KSPField(isPersistant = false)]
+        public float AreaExtended;
+
+        // Part area closed
+        [KSPField(isPersistant = false)]
+        public float Area;
 
         // Resource use when extended
         [KSPField(isPersistant = false)]
@@ -41,9 +49,9 @@ namespace HeatControl
         // ANIMATION
 
         // Start deployed or closed
-        [KSPField(guiName = "Start", guiActiveEditor = false, isPersistant = true)]
-        [UI_Toggle(disabledText = "Closed", enabledText = "Open")]
-        public bool StartDeployed = false;
+       // [KSPField(guiName = "Start", guiActiveEditor = false, isPersistant = true)]
+        //[UI_Toggle(disabledText = "Closed", enabledText = "Open")]
+        //public bool StartDeployed = false;
 
         // Allow or disallow sun tracking (cosmetic only for now)
         [KSPField(guiName = "Tracking", guiActiveEditor = true, isPersistant = true)]
@@ -57,11 +65,6 @@ namespace HeatControl
         [KSPField(isPersistant = false)]
         public string HeatTransformName = "";
 
-        // Private variables
-        private float heatFraction;
-
-        private bool startDeployedLast = false;
-        private AnimationState[] deployStates;
         private AnimationState[] heatStates;
         private Transform heatTransform;
         
@@ -87,14 +90,20 @@ namespace HeatControl
         {
             string info = "";
 
-            if (base.animationName == "")
+            if (!base.isBreakable)
             {
-                info += String.Format("Heat Radiated: {0:F1} kW", HeatRadiated);
+                float heatRadiated = Area*Emissive * Mathf.Pow((float)part.maxTemp*0.75f, 4) * (float)PhysicsGlobals.StefanBoltzmanConstant * 0.001f;
+                info += String.Format("Est. radiation at max temp: {0:F1} kW", heatRadiated);
             }
             else
             {
-                info += String.Format("Heat Radiated (Retracted): {0:F1} kW", HeatRadiated) + "\n" +
-                    String.Format("Heat Radiated (Deployed): {0:F1} kW", HeatRadiatedExtended);
+                float heatRadiated = Area * Emissive * Mathf.Pow((float)part.maxTemp * 0.75f, 4) * (float)PhysicsGlobals.StefanBoltzmanConstant * 0.001f;
+                float heatRadiatedOpen = AreaExtended * EmissiveExtended * Mathf.Pow((float)part.maxTemp * 0.75f, 4) * (float)PhysicsGlobals.StefanBoltzmanConstant * 0.001f;
+                info += String.Format("Est. radiation at max temp (closed): {0:F1} kW", heatRadiated) + "\n" +
+                    String.Format("Est. radiation at max temp (deployed): {0:F1} kW", heatRadiatedOpen);
+
+                //info += String.Format("Heat Radiated (Retracted): {0:F1} kW", HeatRadiated) + "\n" +
+                //    String.Format("Heat Radiated (Deployed): {0:F1} kW", HeatRadiatedExtended);
             }
 
             return info;
@@ -157,55 +166,44 @@ namespace HeatControl
             base.OnFixedUpdate();
             if (HighLogic.LoadedScene == GameScenes.FLIGHT)
             {
-                
-                
-                    // Heat rejection from panels
-                    float availableHeatRejection = 0f;
-
+               
                     // If an animation name is present, assume deployable
                     if (base.animationName != "")
                     {
                         if (base.panelState != ModuleDeployableSolarPanel.panelStates.EXTENDED && base.panelState != ModuleDeployableSolarPanel.panelStates.BROKEN)
                         {
                             // Utils.Log("Closed! " + HeatRadiated.ToString());
-                            availableHeatRejection += HeatRadiated;
+                            part.emissiveConstant = Emissive;
                         }
                         else if (base.panelState == ModuleDeployableSolarPanel.panelStates.BROKEN)
                         {
                             // Utils.Log("Broken!! " + 0.ToString());
-                            availableHeatRejection = 0f;
+                            part.emissiveConstant = Emissive;
                         }
                         else
                         {
 
                             // Utils.Log("Open! " + HeatRadiatedExtended.ToString());
-                            availableHeatRejection += HeatRadiatedExtended;
+                            part.emissiveConstant = EmissiveExtended;
                         }
                     }
                     // always radiate
                     else
                     {
-                        availableHeatRejection += HeatRadiated;
+                        part.emissiveConstant = Emissive;
                     }
 
-                    // Add the heat 
-                    float actualHeat = availableHeatRejection;
-                    part.AddThermalFlux(-(double)actualHeat);
-                    //(float)heatModule.ConsumeHeat();
+
 
 
                     // Update the UI widget
-                    HeatRejectionGUI = String.Format("{0:F3} kW", availableHeatRejection);
-
-                    heatFraction = (actualHeat / (availableHeatRejection * TimeWarp.fixedDeltaTime));
+                    HeatRejectionGUI = String.Format("{0:F3} kW", -part.thermalRadiationFlux);
 
                     if (HeatAnimation != "")
                     {
                         float animFraction = (float) (part.temperature / part.maxTemp);
-                        
                         foreach (AnimationState state in heatStates)
                         {
-
                             state.normalizedTime = Mathf.MoveTowards(state.normalizedTime, Mathf.Clamp01(animFraction), 0.1f * TimeWarp.fixedDeltaTime);
                         }
                     }
