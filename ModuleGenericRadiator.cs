@@ -34,6 +34,14 @@ namespace HeatControl
         [KSPField(isPersistant = false)]
         public float Area;
 
+        // Emissive Constant Extended
+        [KSPField(isPersistant = false)]
+        public float RadiationExtended;
+
+        // Emissive Constant Closed
+        [KSPField(isPersistant = false)]
+        public float Radiation;
+
         // Resource use when extended
         [KSPField(isPersistant = false)]
         public float ResourceUseExtended = 0f;
@@ -45,6 +53,10 @@ namespace HeatControl
         // Name of the resource to use
         [KSPField(isPersistant = false)]
         public string ResourceName = "";
+
+        [KSPField(guiName = "Heat rejection method", guiActiveEditor = true, isPersistant = true)]
+        [UI_Toggle(disabledText = "Emissive", enabledText = "Streetwind")]
+        public bool UseInternalMethod = true;
 
         // ANIMATION
 
@@ -72,9 +84,14 @@ namespace HeatControl
         // Actions and UI
         // --------------
 
-        // Heat Rejection UI note
-        [KSPField(isPersistant = false, guiActive = true, guiName = "Current Heat Rejection")]
+        // Heat Emission UI note
+        [KSPField(isPersistant = false, guiActive = true, guiName = "Current Thermal Radiation")]
         public string HeatRejectionGUI = "0 kW";
+
+        // Heat Input UI note
+        [KSPField(isPersistant = false, guiActive = true, guiName = "Current Heat Input")]
+        public string HeatInputGUI = "0 kW";
+
         // Radiator Status string
         [KSPField(isPersistant = false, guiActive = true, guiName = "Radiator Temperature")]
         public string RadiatorTemp;
@@ -173,33 +190,17 @@ namespace HeatControl
             {
                     RadiatorTemp = String.Format("{0:F1} K", part.temperature);
                     // If an animation name is present, assume deployable
-                    if (base.animationName != "")
-                    {
-                        if (base.panelState != ModuleDeployableSolarPanel.panelStates.EXTENDED && base.panelState != ModuleDeployableSolarPanel.panelStates.BROKEN)
-                        {
-                            // Utils.Log("Closed! " + HeatRadiated.ToString());
-                            part.emissiveConstant = Emissive;
-                        }
-                        else if (base.panelState == ModuleDeployableSolarPanel.panelStates.BROKEN)
-                        {
-                            // Utils.Log("Broken!! " + 0.ToString());
-                            part.emissiveConstant = Emissive;
-                        }
-                        else
-                        {
 
-                            // Utils.Log("Open! " + HeatRadiatedExtended.ToString());
-                            part.emissiveConstant = EmissiveExtended;
-                        }
+
+
+                    if (UseInternalMethod)
+                    {
+                        DoRadiatorEffectsInternal();
                     }
-                    // always radiate
                     else
                     {
-                        part.emissiveConstant = Emissive;
+                        DoRadiatorEffectsEmissive();
                     }
-
-
-
 
                     // Update the UI widget
                     HeatRejectionGUI = String.Format("{0:F3} kW", -part.thermalRadiationFlux);
@@ -216,6 +217,83 @@ namespace HeatControl
                 }
             
 
+        }
+
+        private void DoRadiatorEffectsEmissive()
+        {
+            if (base.animationName != "")
+            {
+             
+                if (base.panelState != ModuleDeployableSolarPanel.panelStates.EXTENDED && base.panelState != ModuleDeployableSolarPanel.panelStates.BROKEN)
+                {
+                    // Utils.Log("Closed! " + HeatRadiated.ToString());
+                    
+                    part.emissiveConstant = Emissive;
+                }
+                else if (base.panelState == ModuleDeployableSolarPanel.panelStates.BROKEN)
+                {
+                    // Utils.Log("Broken!! " + 0.ToString());
+                    part.emissiveConstant = Emissive;
+                }
+                else
+                {
+
+                    // Utils.Log("Open! " + HeatRadiatedExtended.ToString());
+                    part.emissiveConstant = EmissiveExtended;
+                }
+            }
+            // always radiate
+            else
+            {
+                part.emissiveConstant = Emissive;
+            }
+        }
+
+        private void DoRadiatorEffectsInternal()
+        {
+            // nerf some things
+            part.emissiveConstant = 0.95;
+            part.heatConductivity = 0.05;
+
+            float heatRemoved = 0f;
+            if (base.animationName != "")
+            {
+                
+                if (base.panelState != ModuleDeployableSolarPanel.panelStates.EXTENDED && base.panelState != ModuleDeployableSolarPanel.panelStates.BROKEN)
+                {
+                    // Utils.Log("Closed! " + HeatRadiated.ToString());
+                    heatRemoved += Radiation;
+                    
+                }
+                else if (base.panelState == ModuleDeployableSolarPanel.panelStates.BROKEN)
+                {
+                    // Utils.Log("Broken!! " + 0.ToString());
+                    heatRemoved += 0;
+                    part.emissiveConstant = Emissive;
+                }
+                else
+                {
+                    heatRemoved += RadiationExtended;
+                    // Utils.Log("Open! " + HeatRadiatedExtended.ToString());
+                }
+
+                
+            }
+            // always radiate
+            else
+            {
+                heatRemoved += Radiation;
+                
+            }
+
+            if (part.parent != null)
+            {
+                part.parent.AddThermalFlux(-heatRemoved);
+                part.AddThermalFlux(heatRemoved);
+            }
+
+            // Update the UI widget
+            HeatInputGUI = String.Format("{0:F2} kW", heatRemoved);
         }
 
       
