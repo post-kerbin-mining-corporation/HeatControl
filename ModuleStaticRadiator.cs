@@ -8,43 +8,28 @@ namespace HeatControl
 {
 
     // A simplistic heat radiator
-    // Can represent a deployable radiator
-    // Hijacks ModuleDeplyableSolarPanel to do sun-parallel rotation
+    // Can represent a simple radiator or a deplyed radiator
 
-    public class ModuleGenericRadiator : ModuleDeployableSolarPanel
+    public class ModuleStaticRadiator : PartModule
     {
         // KSPFields
         // --------
 
         // GAMEPLAY
 
-        // Emissive Constant Extended
-        [KSPField(isPersistant = false)]
-        public float EmissiveExtended;
-
+   
         // Emissive Constant Closed
         [KSPField(isPersistant = false)]
         public float Emissive;
-
-        // Part area extended
-        [KSPField(isPersistant = false)]
-        public float AreaExtended;
 
         // Part area closed
         [KSPField(isPersistant = false)]
         public float Area;
 
-        // Emissive Constant Extended
-        [KSPField(isPersistant = false)]
-        public float RadiationExtended;
-
         // Emissive Constant Closed
         [KSPField(isPersistant = false)]
         public float Radiation;
 
-        // Resource use when extended
-        [KSPField(isPersistant = false)]
-        public float ResourceUseExtended = 0f;
 
         // Resource use when closed
         [KSPField(isPersistant = false)]
@@ -57,19 +42,9 @@ namespace HeatControl
         // ANIMATION
 
         // Allow or disallow sun tracking (cosmetic only for now)
-        [KSPField(guiName = "Status", guiActiveEditor = true, guiActive= true, isPersistant = true)]
+        [KSPField(guiName = "Status", guiActiveEditor = true, isPersistant = true)]
         [UI_Toggle(disabledText = "Disabled", enabledText = "Enabled")]
         public bool RadiatorActive = true;
-
-        // Start deployed or closed
-       // [KSPField(guiName = "Start", guiActiveEditor = false, isPersistant = true)]
-        //[UI_Toggle(disabledText = "Closed", enabledText = "Open")]
-        //public bool StartDeployed = false;
-
-        // Allow or disallow sun tracking (cosmetic only for now)
-        [KSPField(guiName = "Rotation", guiActiveEditor = true, isPersistant = true)]
-        [UI_Toggle(disabledText = "Disabled", enabledText = "Enabled")]
-        public bool TrackSun = true;
 
         // Animation that plays with increasing heat
         [KSPField(isPersistant = false)]
@@ -126,34 +101,15 @@ namespace HeatControl
             Disable();
         }
 
-        // Toggle radiator
-        public void Toggle()
-        {
-            if (base.panelState == ModuleDeployableSolarPanel.panelStates.EXTENDED)
-                base.Retract();
-            if (base.panelState == ModuleDeployableSolarPanel.panelStates.RETRACTED)
-                base.Extend();
-        }
-
+    
         // UI shown in VAB/SPH
         public override string GetInfo()
         {
             string info = "";
 
-            if (!base.isBreakable)
-            {
-              
                 info += String.Format("Heat Removed: {0:F1} kW", Radiation);
-            }
-            else
-            {
-               
-                info += String.Format("Heat Removed (closed): {0:F1} kW", Radiation) + "\n" +
-                    String.Format("Heat Removed (deployed): {0:F1} kW", RadiationExtended);
-
-                //info += String.Format("Heat Radiated (Retracted): {0:F1} kW", HeatRadiated) + "\n" +
-                //    String.Format("Heat Radiated (Deployed): {0:F1} kW", HeatRadiatedExtended);
-            }
+            
+          
 
             return info;
 
@@ -188,44 +144,20 @@ namespace HeatControl
                     heatState.weight = 1.0f;
                     heatState.enabled = true;
                 }
-            }
-
-            if (!TrackSun)
-                base.trackingSpeed = 0f;
-
-            
+            }            
         }
 
         public override void OnUpdate()
         {
-            base.chargeRate = 0f;
+            
             base.OnUpdate();
             // Hide all the solar panel fields
             if (HighLogic.LoadedScene == GameScenes.FLIGHT)
             {
-                foreach (BaseField fld in base.Fields)
-                {
-                    if (fld.guiName == "Sun Exposure")
-                        fld.guiActive = false;
-                    if (fld.guiName == "Energy Flow")
-                        fld.guiActive = false;
-                    if (fld.guiName == "Status")
-                        fld.guiActive = false;
-                    if (fld.guiName == "Tracking" && base.animationName == "")
-                    {
-                        fld.guiActive = false;
-                    }
-                }
+                
             } else if (HighLogic.LoadedScene == GameScenes.EDITOR)
             {
-                foreach (BaseField fld in base.Fields)
-                {
-                    if (fld.guiName == "Tracking" && base.animationName == "")
-                    {
-                        fld.guiActiveEditor = false;
-                        fld.guiActive = false;
-                    }
-                }
+
             }
             if (Events["Enable"].active == RadiatorActive || Events["Disable"].active != RadiatorActive)
             {
@@ -239,12 +171,10 @@ namespace HeatControl
 
         public override void OnFixedUpdate()
         {
-            
-         
             base.OnFixedUpdate();
+            part.heatConductivity = 0.001f;
             if (HighLogic.LoadedScene == GameScenes.FLIGHT)
             {
-                    part.heatConductivity = 0.001f;
                     RadiatorTemp = String.Format("{0:F1} K", part.temperature);
                     // If an animation name is present, assume deployable
                  
@@ -273,35 +203,8 @@ namespace HeatControl
   
 
             float heatRemoved = 0f;
-            if (base.animationName != "")
-            {
-                
-                if (base.panelState != ModuleDeployableSolarPanel.panelStates.EXTENDED && base.panelState != ModuleDeployableSolarPanel.panelStates.BROKEN)
-                {
-                    // Utils.Log("Closed! " + HeatRadiated.ToString());
-                    heatRemoved += Radiation;
-                    
-                }
-                else if (base.panelState == ModuleDeployableSolarPanel.panelStates.BROKEN)
-                {
-                    // Utils.Log("Broken!! " + 0.ToString());
-                    heatRemoved += 0;
-                   
-                }
-                else
-                {
-                    heatRemoved += RadiationExtended;
-                    // Utils.Log("Open! " + HeatRadiatedExtended.ToString());
-                }
+            heatRemoved += Radiation;
 
-                
-            }
-            // always radiate
-            else
-            {
-                heatRemoved += Radiation;
-                
-            }
             if (part.parent != null)
             {
                 if (part.parent.temperature >= 300d)
