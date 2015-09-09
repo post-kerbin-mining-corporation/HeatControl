@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CModuleHeatPipe.cs" />
+    <Compile Include="HeatControlUI.cs" />
     <Compile Include="ModuleActiveRadiatorInfo.cs" />
     <Compile Include="ModuleGenericRadiator.cs">
       <SubType>Code</SubType>
