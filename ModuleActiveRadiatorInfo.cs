@@ -17,10 +17,6 @@ namespace HeatControl
         [KSPField(isPersistant = false)]
         public float NameplateRadiation = 0f;
 
-        // Emissive Constant Closed
-        [KSPField(isPersistant = false)]
-        public float RadiatorRating = 1f;
-
         [KSPField(isPersistant = false)]
         public bool HasExtendedState = true;
 
@@ -31,10 +27,7 @@ namespace HeatControl
         [KSPField(isPersistant = false, guiActive = true, guiName = "Current Radiation")]
         public string HeatRejectionGUI = "0 kW";
 
-        // Heat Emission UI note
-        [KSPField(isPersistant = false, guiActive = false, guiName = "Radiative Area")]
-        public string RadiativeAreaGUI = "";
-
+    
         // Radiator Status string
         [KSPField(isPersistant = false, guiActive = true, guiName = "Radiator Temperature")]
         public string RadiatorTemp;
@@ -61,13 +54,7 @@ namespace HeatControl
             return info;
 
         }
-        public void Update()
-        {
-            if (part)
-            {
-                RadiativeAreaGUI = part.radiativeArea.ToString();
-            }
-        }
+
 
         public override void OnFixedUpdate()
         {
