@@ -1,0 +1,27 @@
+v0.1.3
+------
+- Fixed description of XR-1500-3X
+- Fixed CTT technodes for 0.1.1 era parts
+- Fixed Tau non-CTT location
+- Slightly decreased mass of RBMK-1500
+
+v0.1.2
+------
+- Fix incorrect archive
+
+
+v0.1.1
+------
+- Added RBMK-1500 and RBMK-1000 Heat Exchangers
+- Added XR-1500x3 Deployable Heat Radiator
+- Added YC 600, YC 400 and YC-400 Surface Heat Radiators
+- Added YZ-70 Heat Radiator Fin
+- Fixed compatability issues with DRE
+- Fixed identical costs for all insulators
+- Cost pass for all radiators, most got cost decreases. 
+- Reduced mass of Tau radiator to 0.07 from 0.10
+- Increased mass and heat rejection of XR-6000 (used to be XR-4500) to bring it in line with other radiators
+
+v0.1.0
+------
+- The beginning!
