@@ -1,3 +1,12 @@
+v0.2.0
+------
+- Updated for KSP 1.05
+- Deprecated Heat Exchangers, Heat Pipes and Insulators
+- Deprecated plugin component in favor of stock modules
+- Added conformal radiators from NF Electrical
+- Re-specced radiators as high temp radiators - will perform better when removing core heat than stock radiators
+- Adjusted many mass, cost and capability parameters to match
+
 v0.1.3
 ------
 - Fixed description of XR-1500-3X

@@ -8,6 +8,9 @@ This is a pack containing parts useful for controlling the heat on your spacecra
 DEPENDENCIES
 ============
 
+Required
+- None
+
 Optional
 - ModuleManager (v2.6.5)
 - Community Tech Tree (v2.0+)
