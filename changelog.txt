@@ -1,3 +1,9 @@
+v0.3.0
+------
+- KSP 1.1 repack
+- Added part search tag fields to all radiators
+- Added VS-
+
 v0.2.1
 ------
 - Fixed typos in DRE patch
