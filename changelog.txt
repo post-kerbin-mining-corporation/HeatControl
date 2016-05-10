@@ -1,8 +1,18 @@
+v0.3.1
+------
+- KSP 1.1.2 flagged
+
+- Updated bundled MM version
+
 v0.3.0
 ------
-- KSP 1.1 repack
+
+- KSP 1.1 prototype
 - Added part search tag fields to all radiators
+
 - Added VS-
+3750 and VS-1000 fixed heat radiators
+
 
 v0.2.1
 ------
