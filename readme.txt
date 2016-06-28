@@ -12,7 +12,7 @@ Required
 - None
 
 Optional
-- ModuleManager (v2.6.24)
+- ModuleManager (v2.6.25)
 - Community Tech Tree (v2.0+)
 
 ============
