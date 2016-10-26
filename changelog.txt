@@ -1,0 +1,68 @@
+v0.3.3
+------
+- KSP 1.2
+- Updated bundled MM
+- Changed all parts' categories to Thermal
+
+v0.3.2
+------
+- KSP 1.1.3
+- Fixed some incorrect radiator power consumption values
+
+v0.3.1
+------
+- KSP 1.1.2 flagged
+
+- Updated bundled MM version
+
+v0.3.0
+------
+
+- KSP 1.1 prototype
+- Added part search tag fields to all radiators
+
+- Added VS-
+3750 and VS-1000 fixed heat radiators
+
+
+v0.2.1
+------
+- Fixed typos in DRE patch
+- Fixed missing radiator parameter
+
+v0.2.0
+------
+- Updated for KSP 1.05
+- Deprecated Heat Exchangers, Heat Pipes and Insulators
+- Deprecated plugin component in favor of stock modules
+- Added conformal radiators from NF Electrical
+- Re-specced radiators as high temp radiators - will perform better when removing core heat than stock radiators
+- Adjusted many mass, cost and capability parameters to match
+
+v0.1.3
+------
+- Fixed description of XR-1500-3X
+- Fixed CTT technodes for 0.1.1 era parts
+- Fixed Tau non-CTT location
+- Slightly decreased mass of RBMK-1500
+
+v0.1.2
+------
+- Fix incorrect archive
+
+
+v0.1.1
+------
+- Added RBMK-1500 and RBMK-1000 Heat Exchangers
+- Added XR-1500x3 Deployable Heat Radiator
+- Added YC 600, YC 400 and YC-400 Surface Heat Radiators
+- Added YZ-70 Heat Radiator Fin
+- Fixed compatability issues with DRE
+- Fixed identical costs for all insulators
+- Cost pass for all radiators, most got cost decreases. 
+- Reduced mass of Tau radiator to 0.07 from 0.10
+- Increased mass and heat rejection of XR-6000 (used to be XR-4500) to bring it in line with other radiators
+
+v0.1.0
+------
+- The beginning!
