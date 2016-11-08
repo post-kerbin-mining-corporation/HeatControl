@@ -1,5 +1,5 @@
 ===================
-HEAT CONTROL v0.3.3
+HEAT CONTROL v0.3.4
 ===================
 
 This is a pack containing parts useful for controlling the heat on your spacecraft.
@@ -9,7 +9,7 @@ DEPENDENCIES
 ============
 
 Required
-- ModuleManager (v2.7.1)
+- ModuleManager (v2.7.3)
 
 Optional
 - Community Tech Tree (v2.0+)
@@ -24,8 +24,8 @@ To install, place the GameData folder inside your Kerbal Space Program folder. I
 KSP-MINI-AVC
 ============
 
-This mod includes version checking using MiniAVC (http://forum.kerbalspaceprogram.com/threads/79745). 
-If you opt-in, it will use the internet to check whether there is a new version available. Data is only read from the internet and no personal information is sent. 
+This mod includes version checking using MiniAVC (http://forum.kerbalspaceprogram.com/threads/79745).
+If you opt-in, it will use the internet to check whether there is a new version available. Data is only read from the internet and no personal information is sent.
 For a more comprehensive version checking experience, please download the KSP-AVC Plugin (http://forum.kerbalspaceprogram.com/threads/79745).
 
 
