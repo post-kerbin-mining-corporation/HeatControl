@@ -1,6 +1,12 @@
 v0.3.5
 ------
 - KSP 1.2.2
+- Updated bundled ModuleManger to 2.7.5
+- Added EBR-1000 and EBR-250 Heat Exchangers: pseudo-radiators that pull (non-core) heat to themselves for low electricity costs. High thermal masses.
+- Added D-6K Microchannel Heat Radiator: advanced heat radiator with great power to mass ratios. Does not rotate, not retractable
+- Added D-3K Microchannel Heat Radiator: half-sized D-6K
+- Added D-500 Microchannel Heat Radiator Panel: Static heat radiator panel, surface attachable
+- Added D-250 Microchannel Heat Radiator Panel: similar to D-500 but cut at a 45 degree angle
 
 v0.3.4
 ------
