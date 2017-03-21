@@ -9,10 +9,10 @@ DEPENDENCIES
 ============
 
 Required
-- ModuleManager (v2.7.3)
+- ModuleManager (v2.7.5)
 
 Optional
-- Community Tech Tree (v2.0+)
+- Community Tech Tree (v2.2+)
 
 ============
 INSTALLATION
@@ -33,8 +33,7 @@ For a more comprehensive version checking experience, please download the KSP-AV
 LICENSING
 =========
 
-The contents of this pack are distributed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
-
-You are free to share and adapt the materials only for non-commercial purposes and when providing appropriate attribution. Any derivatives must be distributed under the same license.
+The cfgs and code in this pack are distributed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). You are free to share and adapt the materials only for non-commercial purposes and when providing appropriate attribution. Any derivatives must be distributed under the same license.
+The art assets in this pack (all models and textures) are distributed under an All Rights Reserved License. You may not redistribute or re-use these assets without express permission from me.
 
 ModuleManager by ialdabaoth and sarbian is distributed under a Creative Commons Sharealike license. More details, including source code, can be found here: http://forum.kerbalspaceprogram.com/threads/31342-0-20-ModuleManager-1-3-for-all-your-stock-modding-needs?p=528607&viewfull=1#post528607
