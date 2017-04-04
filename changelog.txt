@@ -1,7 +1,9 @@
 v0.4.0
 ------
 - KSP 1.3
+- Converted to KSP 1.3 localization
 - Updated included MM to ____
+- Normalized radiator naming - retractable radiators are xxR and fixed are xxF
 - Added EBR-1000 and EBR-250 Heat Exchangers: pseudo-radiators that pull (non-core) heat to themselves for low electricity costs. High thermal masses.
 - Added DR-8K Microchannel Graphene Heat Radiator: advanced heat radiator with great power to mass ratios. Does not rotate, not retractable
 - Added DR-4K Microchannel Graphene Heat Radiator: half-sized DR-8K
