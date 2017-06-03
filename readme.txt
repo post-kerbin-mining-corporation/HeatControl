@@ -9,7 +9,7 @@ DEPENDENCIES
 ============
 
 Required
-- ModuleManager (v2.7.5)
+- ModuleManager (v2.8.0)
 
 Optional
 - Community Tech Tree (v2.2+)
