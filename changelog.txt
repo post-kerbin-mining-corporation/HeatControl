@@ -1,3 +1,24 @@
+v0.4.0
+------
+- KSP 1.3
+- Converted to KSP 1.3 localization
+- Updated included MM to 2.8.0
+- Updated MiniAVC to 1.0.3.3
+- Normalized radiator naming - retractable radiators are xxR and fixed are xxF
+- Added EBR-1000 and EBR-250 Heat Exchangers: pseudo-radiators that pull (non-core) heat to themselves for low electricity costs. High thermal masses.
+- Added DR-8K Microchannel Graphene Heat Radiator: advanced heat radiator with great power to mass ratios. Does not rotate, not retractable
+- Added DR-4K Microchannel Graphene Heat Radiator: half-sized DR-8K
+- Added DF-2K Microchannel Graphene Heat Radiator Panel: Static heat radiator panel, surface attachable
+- Added DF-1K Microchannel Graphene Heat Radiator Panel: similar to DF-2K but cut at a 45 degree angle
+- Normalized High Temperature radiator surface area ratios: dissipated heat now more accurately conforms to surface area ratio
+- Rebalanced mass and cost of all radiators to be consistent with new balance numbers from NFE
+- Renamed all radiators to reflect their new heat transfer numbers
+
+v0.3.4
+------
+- Marked for KSP 1.2.1
+- Updated bundled MM to 2.7.3
+
 v0.3.3
 ------
 - KSP 1.2
@@ -59,7 +80,7 @@ v0.1.1
 - Added YZ-70 Heat Radiator Fin
 - Fixed compatability issues with DRE
 - Fixed identical costs for all insulators
-- Cost pass for all radiators, most got cost decreases. 
+- Cost pass for all radiators, most got cost decreases.
 - Reduced mass of Tau radiator to 0.07 from 0.10
 - Increased mass and heat rejection of XR-6000 (used to be XR-4500) to bring it in line with other radiators
 
