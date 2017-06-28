@@ -1,3 +1,7 @@
+v0.4.2
+------
+- Spanish translations courtesy of forum user fitiales
+
 v0.4.1
 ------
 - Fix description of EF-1K Microchannel Graphene Heat Radiator Panel
