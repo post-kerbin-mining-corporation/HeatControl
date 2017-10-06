@@ -1,5 +1,5 @@
 ===================
-HEAT CONTROL v0.4.2
+HEAT CONTROL v0.4.3
 ===================
 
 This is a pack containing parts useful for controlling the heat on your spacecraft.
