@@ -1,5 +1,5 @@
 ===================
-HEAT CONTROL v0.4.4
+HEAT CONTROL v0.4.5
 ===================
 
 This is a pack containing parts useful for controlling the heat on your spacecraft.
@@ -9,7 +9,7 @@ DEPENDENCIES
 ============
 
 Required
-- ModuleManager (v2.8.0)
+- ModuleManager (v3.0.6)
 
 Optional
 - Community Tech Tree (v2.2+)

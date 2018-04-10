@@ -1,3 +1,9 @@
+v0.4.5
+------
+- KSP 1.4.2
+- Updated MiniAVC to 1.2.0.1
+- Updated ModuleManager to 3.0.6
+
 v0.4.4
 ------
 - Fixed TechRequired of small fixed radiator
