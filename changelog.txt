@@ -1,6 +1,6 @@
 v0.4.6
 ------
-- KSP 1.4.3
+- KSP 1.4.5
 - Switched versioning to min/max implementation
 
 v0.4.5
