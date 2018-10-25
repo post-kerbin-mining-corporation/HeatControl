@@ -1,3 +1,14 @@
+v0.4.7
+------
+- KSP 1.5.0
+- Updated MiniAVC to 1.2.0.6
+- Updated ModuleManager to 3.1.0
+
+v0.4.6
+------
+- KSP 1.4.5
+- Switched versioning to min/max implementation
+
 v0.4.5
 ------
 - KSP 1.4.2
