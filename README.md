@@ -13,9 +13,9 @@ A mod pack for Kerbal Space Program, focused on expanding the thermal control sy
 
 A complete and total rebuild of my old Stockalike Station Parts Expansion project. Everything has been redone, and nothing is left of the old mod!
 
-* **High Temperature Radiators:**  
-* **Graphene Microchannel Radiators:**
-* **Hrat Exchangers:**
+* **High Temperature Radiators:**  Versatile radiators in many form factors - fixed, deployable, wraparaound and more
+* **Graphene Microchannel Radiators:** Giant, fragile radiators with excellent heat rejection
+* **Heat Exchangers:** Specialized items that pull heat to them but do not radiate effectively - useful for moving heat around
 
 ## Dependencies
 
