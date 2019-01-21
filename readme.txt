@@ -1,6 +1,6 @@
-===================
-HEAT CONTROL v0.4.9
-===================
+====================
+HEAT CONTROL v0.4.10
+====================
 
 This is a pack containing parts useful for controlling the heat on your spacecraft.
 
@@ -25,6 +25,15 @@ KSP-AVC
 =======
 
 This mod is compatible with KSP-AVC version checking. For a comprehensive version checking experience, please download the appropriate plugin (http://forum.kerbalspaceprogram.com/threads/79745).
+
+============
+LOCALIZATION
+============
+
+This mod includes localization support, and includes translations for
+- Spanish (KSP forum user fitiales)
+- Russian (KSP forum user Dr. Jet)
+- German (KSP forum user Three_Pounds)
 
 =========
 LICENSING
