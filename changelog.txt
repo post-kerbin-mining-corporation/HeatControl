@@ -2,6 +2,7 @@ v0.4.10
 ------
 - Added German translation (Three_Pounds)
 - Added Russian translation (Dr. Jet)
+- Fixed bulkhead profiles (thanks Streetwind)
 
 v0.4.9
 ------
