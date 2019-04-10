@@ -1,6 +1,6 @@
 v0.4.11
 -------
-- KSP 1.6.x
+- KSP 1.7.x
 - Updated ModuleManager to 4.0.2
 - Added Portugese translation (LianCastro)
 
