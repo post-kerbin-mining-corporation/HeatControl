@@ -21,7 +21,7 @@ A complete and total rebuild of my old Stockalike Station Parts Expansion projec
 
 ### Required
 These components are required for the mod to function and are bundled as part of any download:
-* [ModuleManager (3.1.3)](https://github.com/sarbian/ModuleManager)
+* [ModuleManager (4.0.2)](https://github.com/sarbian/ModuleManager)
 
 ## Installation
 
@@ -47,6 +47,7 @@ For translation instructions please see [Localization Instructions](https://gith
 * **Spanish:** KSP forum user fitiales
 * **Russian:** KSP forum user Dr. Jet
 * **German:** KSP forum user Three_Pounds
+* **Portugese**: LianCastro
 
 ## Licensing
 

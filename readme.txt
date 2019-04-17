@@ -1,5 +1,5 @@
 ====================
-HEAT CONTROL v0.4.10
+HEAT CONTROL v0.4.11
 ====================
 
 This is a pack containing parts useful for controlling the heat on your spacecraft.
@@ -9,7 +9,7 @@ DEPENDENCIES
 ============
 
 Required
-- ModuleManager (v3.1.3)
+- ModuleManager (v4.0.2)
 
 Optional
 - Community Tech Tree (v2.2+)
@@ -34,7 +34,7 @@ This mod includes localization support, and includes translations for
 - Spanish (KSP forum user fitiales)
 - Russian (KSP forum user Dr. Jet)
 - German (KSP forum user Three_Pounds)
-
+- Portugese (LianCastro)
 =========
 LICENSING
 =========

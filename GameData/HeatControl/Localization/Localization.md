@@ -29,3 +29,4 @@ There are some characters that should not be translated into another language an
 * fitiales (Spanish)
 * Dr. Jet (Russian)
 * German (Three_Pounds)
+* Portugese (LianCastro)
