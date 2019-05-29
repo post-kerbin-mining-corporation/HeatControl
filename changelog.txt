@@ -1,3 +1,7 @@
+v0.4.12
+-------
+- Fixed wraparound surface radiators being in the wrong node
+
 v0.4.11
 -------
 - KSP 1.7.x
