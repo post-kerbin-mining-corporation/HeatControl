@@ -1,3 +1,8 @@
+v0.5.0
+-------
+- KSP 1.8
+- Updated ModuleManager to 4.1.0
+
 v0.4.12
 -------
 - Fixed wraparound surface radiators being in the wrong node
