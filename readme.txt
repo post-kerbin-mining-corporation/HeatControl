@@ -35,6 +35,8 @@ This mod includes localization support, and includes translations for
 - Russian (KSP forum user Dr. Jet)
 - German (KSP forum user Three_Pounds)
 - Portugese (LianCastro)
+- Simplified Chinese (YoumuKon)
+
 =========
 LICENSING
 =========
