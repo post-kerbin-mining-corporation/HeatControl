@@ -9,7 +9,7 @@
     "abstract" : "New categories of heat radiator for your spacecraft",
     "resources": {
       "homepage": "https://forum.kerbalspaceprogram.com/index.php?/topic/112027-16x-heat-control-more-radiators-january-21/&page=1",
-      "repository": "https://github.com/ChrisAdderley/HeatControl"
+      "repository": "https://github.com/post-kerbin-mining-corporation/HeatControl"
     },
     "depends" : [
         { "name" : "ModuleManager" }
