@@ -1,3 +1,10 @@
+v0.6.0
+------
+- B9PartSwitch is added as a dependency
+- Square fixed microchannel radiators are now switchable between multiple lengths (2x, 1x, 2/3, half, 1/3). 
+- Triangular fixed microchannel radiators are now switchable between multiple angles (45, 30, 22.5, 15)
+- Reworked max temps for most radiators
+
 v0.5.3
 -------
 - KSP 1.11
