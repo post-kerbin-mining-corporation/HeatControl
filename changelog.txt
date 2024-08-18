@@ -1,3 +1,11 @@
+v0.6.2
+------
+- Updated ModuleManager to 4.2.3
+- Updated B9PartSwitch to 2.20.0
+- Fixed an erronous patch specifier that meant MM might think SpaceDust was installed
+- Support VABOrganizer
+- Added EVA construction/cargo storage capabilities to radiators (coredumpster)
+
 v0.6.1
 ------
 - Updated ModuleManager to 4.2.1
